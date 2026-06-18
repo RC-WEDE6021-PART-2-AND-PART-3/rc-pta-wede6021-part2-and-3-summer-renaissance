@@ -1,0 +1,307 @@
+# HOW TO USE THE PASTIMES CLOTHING STORE MANAGEMENT SYSTEM
+
+## Introduction
+
+Pastimes is a web-based clothing store management system that allows customers to buy clothing, sellers to submit clothing requests, and administrators to manage the store. This guide explains how to use the system effectively.
+
+---
+
+# Starting the System
+
+## Step 1: Start XAMPP
+
+Open XAMPP Control Panel and start:
+
+* Apache
+* MySQL
+
+Both services must be running before accessing the system.
+
+---
+
+## Step 2: Open the Website
+
+Open your web browser and enter:
+
+```text
+http://localhost/ClothingStore
+```
+
+The Pastimes homepage will load.
+
+---
+
+# Customer Guide
+
+## Registering a New Account
+
+1. Open the Registration page.
+2. Enter:
+
+   * Full Name
+   * Email Address
+   * Password
+3. Click **Register**.
+4. Wait for administrator verification before logging in.
+
+---
+
+## Logging In
+
+1. Open the Login page.
+2. Enter:
+
+   * Email Address
+   * Password
+3. Click **Login**.
+4. After successful login, the system redirects you to the dashboard.
+
+---
+
+## Browsing Clothing
+
+1. Select **Clothing Store** from the menu.
+2. Browse available clothing items.
+3. View:
+
+   * Product image
+   * Brand
+   * Description
+   * Size
+   * Price
+
+---
+
+## Searching for Clothing
+
+1. Navigate to the Clothing Store page.
+2. Enter a product name or brand in the search box.
+3. Click **Search**.
+4. Matching products will be displayed.
+
+---
+
+## Adding Items to Cart
+
+1. Find a clothing item.
+2. Click **Add to Cart**.
+3. The item will be added to your shopping cart.
+
+---
+
+## Viewing the Cart
+
+1. Click **Cart** from the navigation menu.
+2. View all selected items.
+3. Review:
+
+   * Product information
+   * Quantity
+   * Price
+   * Total amount
+
+---
+
+## Updating Cart Items
+
+1. Open the Cart page.
+2. Change the quantity of an item.
+3. Click **Update**.
+4. The cart total will be recalculated automatically.
+
+---
+
+## Removing Items from Cart
+
+1. Open the Cart page.
+2. Click **Remove** next to the item.
+3. The item will be deleted from the cart.
+
+---
+
+## Completing Checkout
+
+1. Open the Cart page.
+2. Click **Checkout**.
+3. Enter:
+
+   * Full Name
+   * Email Address
+   * Delivery Address
+4. Click **Complete Purchase**.
+
+The order will be saved to the database.
+
+---
+
+## Viewing Order Confirmation
+
+After checkout:
+
+1. The system generates an order.
+2. A confirmation page is displayed.
+3. The order number and payment summary are shown.
+
+---
+
+# Seller Guide
+
+## Submitting a Clothing Request
+
+1. Select **Sell Item** from the navigation menu.
+2. Complete the form:
+
+   * Seller Name
+   * Seller Email
+   * Brand
+   * Description
+   * Size
+   * Price
+   * Product Image
+3. Click **Submit Request**.
+
+The request will be sent to the administrator for review.
+
+---
+
+# Administrator Guide
+
+## User Management
+
+Administrators can:
+
+### Add Users
+
+Create new user accounts.
+
+### Edit Users
+
+Update user information.
+
+### Delete Users
+
+Remove users from the system.
+
+### Verify Users
+
+Approve pending user accounts.
+
+---
+
+## Clothing Management
+
+Administrators can:
+
+### Add Clothing
+
+Create new clothing products.
+
+### Edit Clothing
+
+Update product details.
+
+### Delete Clothing
+
+Remove products from the store.
+
+### View Clothing
+
+See all available products.
+
+---
+
+## Seller Request Management
+
+Administrators can:
+
+### View Requests
+
+Review all seller submissions.
+
+### Approve Requests
+
+Approve clothing requests and automatically add them to the store.
+
+### Reject Requests
+
+Reject unsuitable clothing submissions.
+
+---
+
+## Communication System
+
+Administrators can communicate with users through:
+
+### Contact Buyer
+
+Send messages to buyers.
+
+### Contact Seller
+
+Send messages to sellers.
+
+Messages are stored in the system database.
+
+---
+
+# Database Management
+
+The system automatically stores information in:
+
+* tblUser
+* tblAdmin
+* tblClothes
+* tblCart
+* tblOrder
+* tblOrderItem
+* tblSellerRequest
+* tblMessages
+
+Administrators can monitor these tables using phpMyAdmin.
+
+---
+
+# Troubleshooting
+
+## Login Not Working
+
+Check:
+
+* User has been verified.
+* Correct email and password are entered.
+* Database connection is active.
+
+---
+
+## Images Not Uploading
+
+Check:
+
+* uploads folder exists.
+* Folder permissions allow uploads.
+* Supported image formats are used.
+
+---
+
+## Cart Errors
+
+Check:
+
+* tblCart table exists.
+* Database connection is active.
+
+---
+
+## Checkout Errors
+
+Check:
+
+* tblOrder table exists.
+* tblOrderItem table exists.
+* Customer information is completed correctly.
+
+---
+
+# Conclusion
+
+Pastimes provides a complete clothing store solution for customers, sellers, and administrators. The system supports user management, clothing management, seller requests, shopping carts, checkout processing, communication features, and responsive web design, making it easy to manage and operate an online clothing store.

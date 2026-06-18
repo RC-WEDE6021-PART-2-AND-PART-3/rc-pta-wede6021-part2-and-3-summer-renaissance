@@ -1,0 +1,83 @@
+
+CREATE TABLE IF NOT EXISTS tblUser (
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    fullName VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending'
+);
+
+CREATE TABLE IF NOT EXISTS tblAdmin (
+    adminID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tblClothes (
+    clothID INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    brand VARCHAR(100) NOT NULL,
+    description TEXT,
+    size VARCHAR(30) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tblCart (
+    cartID INT AUTO_INCREMENT PRIMARY KEY,
+    sessionID VARCHAR(128) NOT NULL,
+    userID INT NULL,
+    clothID INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (userID) REFERENCES tblUser(userID) ON DELETE SET NULL,
+    FOREIGN KEY (clothID) REFERENCES tblClothes(clothID) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS tblOrder (
+    orderID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT NULL,
+    sessionID VARCHAR(128),
+    customerName VARCHAR(100) NOT NULL,
+    customerEmail VARCHAR(100) NOT NULL,
+    customerAddress TEXT NOT NULL,
+    totalAmount DECIMAL(10,2) NOT NULL,
+    orderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(30) DEFAULT 'completed',
+    FOREIGN KEY (userID) REFERENCES tblUser(userID) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS tblOrderItem (
+    orderItemID INT AUTO_INCREMENT PRIMARY KEY,
+    orderID INT NOT NULL,
+    clothID INT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (orderID) REFERENCES tblOrder(orderID) ON DELETE CASCADE,
+    FOREIGN KEY (clothID) REFERENCES tblClothes(clothID) ON DELETE SET NULL
+);
+
+CREATE TABLE IF NOT EXISTS tblSellerRequest (
+    requestID INT AUTO_INCREMENT PRIMARY KEY,
+    sellerName VARCHAR(100) NOT NULL,
+    sellerEmail VARCHAR(100) NOT NULL,
+    brand VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    size VARCHAR(30) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    image VARCHAR(255),
+    status VARCHAR(30) DEFAULT 'pending',
+    adminNote TEXT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tblMessages (
+    messageID INT AUTO_INCREMENT PRIMARY KEY,
+    recipientType ENUM('buyer','seller') NOT NULL,
+    recipientName VARCHAR(100) NOT NULL,
+    recipientEmail VARCHAR(100) NOT NULL,
+    subject VARCHAR(150) NOT NULL,
+    message TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
